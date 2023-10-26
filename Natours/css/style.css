@@ -40,6 +40,7 @@ body {
         url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
+    position: relative;
 
     /* Create a polygon (order doesn't matter, all points are relative */
     /* polygon (x y, x y, x y, x y) - (top left, move 100% in x direction, move down 200px fully right (100%)) */
@@ -47,3 +48,41 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
+.logo-box {
+    /* absolute position in terms of parent element. Parent element needs to have a relative position */
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    /* Note: the top/left %'s relate to the parent element (moves the start of the element to ~centre of screen) */
+    top: 40%;
+    left: 50%;
+    /* Note: transform percentages relate to the element itself. This adjusts the element 50% back and up */
+    transform: translate(-50%, -50%);
+}
+
+.primary-heading {
+    color: white;
+    text-transform: uppercase;
+}
+
+.primary-heading--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.primary-heading--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 15px;
+}
