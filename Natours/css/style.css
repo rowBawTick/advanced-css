@@ -71,6 +71,10 @@ body {
 .primary-heading {
     color: white;
     text-transform: uppercase;
+
+    /* Note: This backface visibility hide the back of an element (usually when it's rotating)
+    but also fixes a shaking bug at the end of an animation - I didn't see it so have left it out (maybe fixed?) */
+    /*backface-visibility: hidden;*/
 }
 
 .primary-heading--main {
@@ -78,6 +82,11 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    /* Note: ease-out - animation ends slower */
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
 }
 
 .primary-heading--sub {
@@ -85,4 +94,43 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 15px;
+
+    /* Note: Can use the shorthand animation to specify each of the animations */
+    animation: moveInRight 1.5s ease-out;
+}
+
+/* Note: @keyframes is a more advanced animation than transition */
+/* Can state at what point (percentage way through the animation) you want things to happen */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    98% {
+        transform: translateX(1%);
+    }
+
+    100% {
+        opacity: 1;
+        /* set it back to original position at the end */
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    98% {
+        transform: translateX(-1%);
+    }
+
+    100% {
+        opacity: 1;
+        /* set it back to original position at the end */
+        transform: translateX(0);
+    }
 }
