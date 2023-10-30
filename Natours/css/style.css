@@ -66,6 +66,7 @@ body {
     left: 50%;
     /* Note: transform percentages relate to the element itself. This adjusts the element 50% back and up */
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .primary-heading {
@@ -75,6 +76,7 @@ body {
     /* Note: This backface visibility hide the back of an element (usually when it's rotating)
     but also fixes a shaking bug at the end of an animation - I didn't see it so have left it out (maybe fixed?) */
     /*backface-visibility: hidden;*/
+    margin-bottom: 60px;
 }
 
 .primary-heading--main {
@@ -133,4 +135,36 @@ body {
         /* set it back to original position at the end */
         transform: translateX(0);
     }
+}
+
+/* Note: Colon for pseudo-element. :link for links that have not yet been visited */
+/* over-writing standard blue links for visited links too */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    /* Inline-block gives a bit of padding to element (uses box model?) */
+    display: inline-block;
+    border-radius: 100px;
+    /* Transition needs to be on initial state to apply to all subsequent pseudo states */
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    /* Down direction is positive on y-axis. (content goes top to bottom) */
+    transform: translateY(-3px);
+    /* black and 20% opacity for shadow */
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
+}
+
+.btn:active {
+    /* translation is always related to position of initial state (btn:link in this case) */
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px; rgba(0,0,0, 0.2);
+}
+
+.btn--white {
+    background-color: white;
+    color: #777;
 }
