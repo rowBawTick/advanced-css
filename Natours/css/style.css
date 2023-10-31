@@ -137,6 +137,19 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(150%);
+    }
+
+    100% {
+        opacity: 1;
+        /* set it back to original position at the end */
+        transform: translateY(0);
+    }
+}
+
 /* Note: Colon for pseudo-element. :link for links that have not yet been visited */
 /* over-writing standard blue links for visited links too */
 .btn:link,
@@ -149,6 +162,7 @@ body {
     border-radius: 100px;
     /* Transition needs to be on initial state to apply to all subsequent pseudo states */
     transition: all 0.2s;
+    position: relative;
 }
 
 .btn:hover {
@@ -167,4 +181,44 @@ body {
 .btn--white {
     background-color: white;
     color: #777;
+}
+
+.btn::after {
+    /* Always need to display content and display property (even if content is empty) */
+    /* We want it to have the same styles/behaviour as the 'parent' element .btn */
+    /* TODO: chris 31/10/2023 - Feels like it could be DRY'd up with SASS */
+    content: '';
+    display: inline-block;
+    /* pseudo element :after is treated like a child element of button. 100% means 100% of .btn size  */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* Note: absolute position means it'll be positioned from the nearest parent element it can find with a relative position */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    /* Note: Transition property has to be on parent element. Transform on hover. */
+    transition: all 0.4s;
+}
+
+.btn--white::after {
+    background-color: white;
+}
+
+/* Note: :after pseudo element but only on hover */
+.btn:hover::after {
+    /*transform: scale(1.5);*/
+    transform: scaleX(1.4) scaleY(1.6);
+    /* Note: Final opacity, it will start with opacity of parent (1) */
+    opacity: 0;
+}
+
+/* Note: Only want the animations on this button. Hence separate CSS class */
+.btn--animated {
+    /* Note: animation: name duration timing-function delay  */
+    animation: moveInBottom 1s ease-out .5s;
+    /* Note: automatically applies the animation styles of the 0% before the animation starts */
+    animation-fill-mode: backwards;
 }
