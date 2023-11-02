@@ -12,11 +12,12 @@ Basic Reset
 
 */
 
+/* Note: The *{} applies the specificity of (0,0,0,0) */
 * {
-    /* Some browsers add margin and padding to headings */
+    /* Note: Some browsers add margin and padding to headings */
     margin: 0;
     padding: 0;
-    /* Border is included in width and height of element */
+    /* Note: Border is included in width and height of element */
     box-sizing: border-box;
 }
 
@@ -49,7 +50,7 @@ body {
 }
 
 .logo-box {
-    /* absolute position in terms of parent element. Parent element needs to have a relative position */
+    /* Note: absolute position in terms of parent element. Parent element needs to have a relative position */
     position: absolute;
     top: 40px;
     left: 40px;
@@ -98,6 +99,7 @@ body {
     letter-spacing: 15px;
 
     /* Note: Can use the shorthand animation to specify each of the animations */
+    /* Note: animation: name duration timing-function (delay)  */
     animation: moveInRight 1.5s ease-out;
 }
 
@@ -152,6 +154,8 @@ body {
 
 /* Note: Colon for pseudo-element. :link for links that have not yet been visited */
 /* over-writing standard blue links for visited links too */
+/* Note: Don't need .btn class as it's a link tag <a> */
+/*.btn,*/
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -183,13 +187,14 @@ body {
     color: #777;
 }
 
+/* Note: This is for the hover jump out animation over the button */
 .btn::after {
-    /* Always need to display content and display property (even if content is empty) */
+    /* For ::after pseudo element - Always need 'display' and 'content' properties (even if content is empty) */
     /* We want it to have the same styles/behaviour as the 'parent' element .btn */
     /* TODO: chris 31/10/2023 - Feels like it could be DRY'd up with SASS */
     content: '';
     display: inline-block;
-    /* pseudo element :after is treated like a child element of button. 100% means 100% of .btn size  */
+    /* pseudo element ::after is treated like a child element of button. 100% means 100% of .btn size  */
     height: 100%;
     width: 100%;
     border-radius: 100px;

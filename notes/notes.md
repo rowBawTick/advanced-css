@@ -14,9 +14,12 @@ Loading a Webpage:
     -  CSS Object Model (CSSOM) - similar to DOM.
 
 Specificity:
-- (inline, id's, classes and pseudo-classes, elements and pseudo-elements) -> ()
+- (0,0,0,0) -> (inline, id's, classes and pseudo-classes, elements and pseudo-elements)
+- (0,0,0,2) > (0,0,0,1)
+- (0,0,1,0) > (0,0,0,123)
 - Always put your stylesheets last after 3rd party stylesheets!
-- Not from the course, but max specificity should be 1.
+- Avoid !important (if possible).
+- Not from the course, but max specificity should be 1???
 - TailwindCSS & BEM are good solutions to conflicting CSS (also scoped CSS in Vue components)
     
 - !! Pseudo classes count as one extra specificity in the class column! -  if a :hover state is attached to a
@@ -27,13 +30,13 @@ Specificity:
         background-color: blue;
     }
   
-    #btn {
+    #my-btn {
         background-color: green;
     }
   
-    # Need this to have a higher specificity than #btn
-    #btn:hover {
-        background-color: red;
+    # Need this to have a higher specificity than #btn (0,1,1,0)
+    #my-btn:hover {
+        background-color: blue;
     }
 
     ```
