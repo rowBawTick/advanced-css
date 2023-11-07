@@ -41,3 +41,11 @@ Specificity:
 
     ```
   
+Inheritance:
+- Any descendant can inherit a property from its ancestors if the intermediate parents don't override the property
+- IMO - For (Vue) components it probably makes sense for it to be un-opinionated and leave properties to the parent.  
+- Not all CSS properties are inherited: 
+  - Inherited properties; color, font-family, size, weight, text-align, letter-spacing, text-transform)
+  - Non-inherited properties; width, height, margin, padding, border, background, position.
+  - You can set the css property to explicitly inherit if it doesn't already `width: inherit;`
+  - 
