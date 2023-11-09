@@ -52,11 +52,11 @@ Inheritance:
 - em (font) is also based on the parent's size (3em is 3x font-size of parent)
 - em (length) is based on the **current** element's **font-size** (length of 2em = 2x *font-size* of current element)
 - rem is based on the root element (10rem = 10x font-size of root element)
+- IMO - to avoid confusion then use rem's unless you specifically want a component to scale in different situations. 
 
 ```
 html, body {
     font-size: 16px;
     width: 80vw
 }
-
 ```
