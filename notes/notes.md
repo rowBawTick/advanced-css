@@ -48,4 +48,15 @@ Inheritance:
   - Inherited properties; color, font-family, size, weight, text-align, letter-spacing, text-transform)
   - Non-inherited properties; width, height, margin, padding, border, background, position.
   - You can set the css property to explicitly inherit if it doesn't already `width: inherit;`
-  - 
+- % (percentage) of fonts & lengths is the percentage of the **parent's** font/length.
+- em (font) is also based on the parent's size (3em is 3x font-size of parent)
+- em (length) is based on the **current** element's **font-size** (length of 2em = 2x *font-size* of current element)
+- rem is based on the root element (10rem = 10x font-size of root element)
+
+```
+html, body {
+    font-size: 16px;
+    width: 80vw
+}
+
+```
