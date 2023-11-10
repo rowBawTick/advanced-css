@@ -52,11 +52,18 @@ Inheritance:
 - em (font) is also based on the parent's size (3em is 3x font-size of parent)
 - em (length) is based on the **current** element's **font-size** (length of 2em = 2x *font-size* of current element)
 - rem is based on the root element (10rem = 10x font-size of root element)
-- IMO - to avoid confusion then use rem's unless you specifically want a component to scale in different situations. 
+- IMO - to avoid confusion then use rem's unless you specifically want a component to scale in different situations.
+- Computed inheritance: 
+  - It is the computed value that is inherited. Not the specified value.
+  - In the example below: 150% of 20px = 30px -> inherited line-height of .child is 30px (not 150% of 25px!)
 
 ```
-html, body {
-    font-size: 16px;
-    width: 80vw
+.parent {
+    font-size: 20px;
+    line-height: 150%;
+}
+
+.child {
+    font-size: 25px;
 }
 ```
