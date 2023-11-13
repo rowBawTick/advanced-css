@@ -13,12 +13,14 @@ Basic Reset
 */
 
 /* Note: The *{} applies the specificity of (0,0,0,0) */
-* {
+*,
+*::after,
+*::before {
     /* Note: Some browsers add margin and padding to headings */
     margin: 0;
     padding: 0;
     /* Note: Border is included in width and height of element */
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 /* Note: It's best to make this a % rather than px as then it won't overwrite the browser's default font-size.
@@ -34,6 +36,8 @@ body {
     line-height: 1.7;
     color: #777;
     padding: 3rem;
+
+    box-sizing: border-box;
 }
 
 .header {
