@@ -21,13 +21,17 @@ Basic Reset
     box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;
+}
+
 body {
     font-family: "Lato", SansSerif;
     font-weight: 400;
-    font-size: 16px;
+    /*font-size: 16px;*/
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
 }
 
 .header {
@@ -52,12 +56,12 @@ body {
 .logo-box {
     /* Note: absolute position in terms of parent element. Parent element needs to have a relative position */
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -77,14 +81,14 @@ body {
     /* Note: This backface visibility hide the back of an element (usually when it's rotating)
     but also fixes a shaking bug at the end of an animation - I didn't see it so have left it out (maybe fixed?) */
     /*backface-visibility: hidden;*/
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .primary-heading--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     /* Note: ease-out - animation ends slower */
     animation-name: moveInLeft;
@@ -94,9 +98,9 @@ body {
 
 .primary-heading--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 15px;
+    letter-spacing: 1.5rem;
 
     /* Note: Can use the shorthand animation to specify each of the animations */
     /* Note: animation: name duration timing-function (delay)  */
@@ -160,10 +164,10 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     /* Inline-block gives a bit of padding to element (uses box model?) */
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* Transition needs to be on initial state to apply to all subsequent pseudo states */
     transition: all 0.2s;
     position: relative;
@@ -173,13 +177,13 @@ body {
     /* Down direction is positive on y-axis. (content goes top to bottom) */
     transform: translateY(-3px);
     /* black and 20% opacity for shadow */
-    box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
+    box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
 }
 
 .btn:active {
     /* translation is always related to position of initial state (btn:link in this case) */
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px; rgba(0,0,0, 0.2);
+    box-shadow: 0 0.5rem 1rem; rgba(0,0,0, 0.2);
 }
 
 .btn--white {
@@ -197,7 +201,7 @@ body {
     /* pseudo element ::after is treated like a child element of button. 100% means 100% of .btn size  */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* Note: absolute position means it'll be positioned from the nearest parent element it can find with a relative position */
     position: absolute;
     top: 0;
