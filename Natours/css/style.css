@@ -21,8 +21,10 @@ Basic Reset
     box-sizing: border-box;
 }
 
+/* Note: It's best to make this a % rather than px as then it won't overwrite the browser's default font-size.
+ Some people will modify the browser's default font-size for accessibility reasons. Default is 16px (62.5% = 10px) */
 html {
-    font-size: 10px;
+    font-size: 62.5%;
 }
 
 body {
