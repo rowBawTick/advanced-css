@@ -1,11 +1,11 @@
 These notes are not complete (only important notes or new knowledge from my POV)
 
-3 pillars of maintainable HTML & CSS:
+### 3 pillars of maintainable HTML & CSS:
 - See image
 - Most performance improvements can be made by reducing image sizes
 (or just use less images - ask yourself if they are necessary)
 
-Loading a Webpage:
+### Loading a Webpage:
 - Parsing html decodes the html and then creates the DOM.
 - Parsing the html also includes parsing CSS.
 - Parsing CSS:
@@ -13,7 +13,7 @@ Loading a Webpage:
     user's device -> convert it into pixels.
     -  CSS Object Model (CSSOM) - similar to DOM.
 
-Specificity:
+### Specificity:
 - (0,0,0,0) -> (inline, id's, classes and pseudo-classes, elements and pseudo-elements)
 - (0,0,0,2) > (0,0,0,1)
 - (0,0,1,0) > (0,0,0,123)
@@ -67,3 +67,6 @@ Inheritance:
     font-size: 25px;
 }
 ```
+
+### Box Model
+- 
