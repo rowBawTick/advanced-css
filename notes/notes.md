@@ -68,5 +68,6 @@ Inheritance:
 }
 ```
 
-### Box Model
+### CSS Rendering (lesson 19):
+- Stacking contexts: usally use the z-index, but opactity, filter and transform also create different stacking contexts
 - 
