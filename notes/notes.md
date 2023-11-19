@@ -69,5 +69,35 @@ Inheritance:
 ```
 
 ### CSS Rendering (lesson 19):
-- Stacking contexts: usally use the z-index, but opactity, filter and transform also create different stacking contexts
-- 
+- Stacking contexts: usually use the z-index, but opacity, filter and transform also create different stacking contexts
+
+
+### BEM
+- Useful system to avoid class conflicts by keeping a low specificity.
+- CSS tricks have a good [article on BEM](https://css-tricks.com/bem-101/)
+- Use with SASS and `@extend` to make html/css more readable (see Vue component in SASS notes below)
+
+### SASS (My opinion)
+Use @extend to extend css functionality with the BEM convention. This makes it easier to find classes and reduces 
+css classes needed in the html. The `<div>` below will contain both styles.
+```
+<template>
+  <div class=snapshot-container--modal>
+...
+</template>
+
+<style>
+.snapshot-container {
+    background-color: $sioWhite;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+}
+
+.snapshot-container--modal {
+    @extend .snapshot-container;
+    height: 70vh;
+    width: 70vw;
+    z-index: 101;
+}
+</style>
+```
