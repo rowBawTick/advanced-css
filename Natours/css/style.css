@@ -59,18 +59,18 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     /* Note: absolute position in terms of parent element. Parent element needs to have a relative position */
     position: absolute;
     top: 4rem;
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     /* Note: the top/left %'s relate to the parent element (moves the start of the element to ~centre of screen) */
     top: 40%;
