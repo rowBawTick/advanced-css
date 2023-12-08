@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-primary: #f9ed69; // yellow
+
+nav {
+  margin: 30px;
+  background-color: $color-primary;
+}
