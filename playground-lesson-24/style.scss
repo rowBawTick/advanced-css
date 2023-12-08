@@ -4,8 +4,24 @@
 }
 
 $color-primary: #f9ed69; // yellow
+$color-secondary: #f08a5d; // orange
+$color-tertiary: #b83b5e; // pink
 
 nav {
   margin: 30px;
   background-color: $color-primary;
+}
+
+/* Note: Check the compiled css to see what it is equivalent to */
+.navigation {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin-left: 30px;
+  }
+
+  li:last-child {
+    margin: 0;
+  }
 }
