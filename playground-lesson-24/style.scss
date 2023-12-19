@@ -6,22 +6,52 @@
 $color-primary: #f9ed69; // yellow
 $color-secondary: #f08a5d; // orange
 $color-tertiary: #b83b5e; // pink
+$color-text-dark: #333;
 
 nav {
   margin: 30px;
   background-color: $color-primary;
+
+  // .clearfix
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 }
+
+/* Note: This is the clearfix solution, which we can put in the nav{} selector */
+//.clearfix::after {
+//  content: "";
+//  clear: both;
+//  display: table;
+//}
+
 
 /* Note: Check the compiled css to see what it is equivalent to */
 .navigation {
   list-style: none;
+  /* Note: When we put in float: left; All the child elements inherit this and float too */
+  /* This makes the elements collapse and they lose their height. Use the .clearfix method to solve this float issue */
+  float: left;
 
   li {
     display: inline-block;
     margin-left: 30px;
-  }
 
-  li:last-child {
-    margin: 0;
+    &:first-child {
+      margin: 0;
+    }
+
+    a:link {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $color-text-dark;
+    }
   }
+}
+// .navigation li:first-child
+
+.buttons {
+  float: right;
 }
