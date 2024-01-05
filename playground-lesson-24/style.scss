@@ -1,3 +1,7 @@
+// Note: Installed scss with homebrew
+// Compile scss into css with cli command: $ sass style.scss style.css
+// Add --watch flag to watch for changes: $ sass --watch style.scss style.css
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +11,9 @@ $color-primary: #f9ed69; // yellow
 $color-secondary: #f08a5d; // orange
 $color-tertiary: #b83b5e; // pink
 $color-text-dark: #333;
+$color-text-light: #eee;
+
+$button-width: 150px;
 
 nav {
   margin: 30px;
@@ -54,4 +61,33 @@ nav {
 
 .buttons {
   float: right;
+}
+
+.btn--main,
+.btn--hot {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: $button-width;
+  color: $color-text-light;
+}
+
+.btn--main {
+  background-color: $color-secondary;
+
+  /* Note: sass darken() & lighten() functions are useful */
+  &:hover {
+    background-color: darken($color-secondary, 10%);
+  }
+}
+
+.btn--hot {
+  background-color: $color-tertiary;
+
+  &:hover {
+    background-color: darken($color-tertiary, 10%);
+  }
 }
