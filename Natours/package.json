@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-sass": "^9.0.0"
+    "sass": "^1.72.0"
   }
 }
