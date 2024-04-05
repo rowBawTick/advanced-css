@@ -1,0 +1,235 @@
+// COLORS:
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+/*
+Basic Reset
+
+*/
+
+/* Note: The *{} applies the specificity of (0,0,0,0) */
+*,
+*::after,
+*::before {
+  /* Note: Some browsers add margin and padding to headings */
+  margin: 0;
+  padding: 0;
+  /* Note: Border is included in width and height of element */
+  box-sizing: inherit;
+}
+
+/* Note: It's best to make this a % rather than px as then it won't overwrite the browser's default font-size.
+ Some people will modify the browser's default font-size for accessibility reasons. Default is 16px (62.5% = 10px) */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", SansSerif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh;
+  background-image:
+    linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.75),
+      rgba($color-primary-dark, 0.75)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  /* Create a polygon (order doesn't matter, all points are relative */
+  /* polygon (x y, x y, x y, x y) - (top left, move 100% in x direction, move down 200px fully right (100%)) */
+  /* 0 0 is top left, 100% moves it over to end of element */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.header__logo-box {
+  /* Note: absolute position in terms of parent element. Parent element needs to have a relative position */
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  /* Note: the top/left %'s relate to the parent element (moves the start of the element to ~centre of screen) */
+  top: 40%;
+  left: 50%;
+  /* Note: transform percentages relate to the element itself. This adjusts the element 50% back and up */
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.primary-heading {
+  color: white;
+  text-transform: uppercase;
+
+  /* Note: This backface visibility hide the back of an element (usually when it's rotating)
+  but also fixes a shaking bug at the end of an animation - I didn't see it so have left it out (maybe fixed?) */
+  /*backface-visibility: hidden;*/
+  margin-bottom: 6rem;
+}
+
+.primary-heading--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+
+  /* Note: ease-out - animation ends slower */
+  animation-name: moveInLeft;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+.primary-heading--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.5rem;
+
+  /* Note: Can use the shorthand animation to specify each of the animations */
+  /* Note: animation: name duration timing-function (delay)  */
+  animation: moveInRight 1.5s ease-out;
+}
+
+/* Note: @keyframes is a more advanced animation than transition */
+/* Can state at what point (percentage way through the animation) you want things to happen */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  98% {
+    transform: translateX(1%);
+  }
+
+  100% {
+    opacity: 1;
+    /* set it back to original position at the end */
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  98% {
+    transform: translateX(-1%);
+  }
+
+  100% {
+    opacity: 1;
+    /* set it back to original position at the end */
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(150%);
+  }
+
+  100% {
+    opacity: 1;
+    /* set it back to original position at the end */
+    transform: translateY(0);
+  }
+}
+
+/* Note: Colon for pseudo-element. :link for links that have not yet been visited */
+/* over-writing standard blue links for visited links too */
+/* Note: Don't need .btn class as it's a link tag <a> */
+/*.btn,*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  /* Inline-block gives a bit of padding to element (uses box model?) */
+  display: inline-block;
+  border-radius: 10rem;
+  /* Transition needs to be on initial state to apply to all subsequent pseudo states */
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn:hover {
+  /* Down direction is positive on y-axis. (content goes top to bottom) */
+  transform: translateY(-3px);
+  /* black and 20% opacity for shadow */
+  box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
+}
+
+.btn:active {
+  /* translation is always related to position of initial state (btn:link in this case) */
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem; rgba(0,0,0, 0.2);
+}
+
+.btn--white {
+  background-color: white;
+  color: #777;
+}
+
+/* Note: This is for the hover jump out animation over the button */
+.btn::after {
+  /* For ::after pseudo element - Always need 'display' and 'content' properties (even if content is empty) */
+  /* We want it to have the same styles/behaviour as the 'parent' element .btn */
+  /* TODO: chris 31/10/2023 - Feels like it could be DRY'd up with SASS */
+  content: '';
+  display: inline-block;
+  /* pseudo element ::after is treated like a child element of button. 100% means 100% of .btn size  */
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  /* Note: absolute position means it'll be positioned from the nearest parent element it can find with a relative position */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  /* Note: Transition property has to be on parent element. Transform on hover. */
+  transition: all 0.4s;
+}
+
+.btn--white::after {
+  background-color: white;
+}
+
+/* Note: :after pseudo element but only on hover */
+.btn:hover::after {
+  /*transform: scale(1.5);*/
+  transform: scaleX(1.4) scaleY(1.6);
+  /* Note: Final opacity, it will start with opacity of parent (1) */
+  opacity: 0;
+}
+
+/* Note: Only want the animations on this button. Hence separate CSS class */
+.btn--animated {
+  /* Note: animation: name duration timing-function delay  */
+  animation: moveInBottom 1s ease-out .5s;
+  /* Note: automatically applies the animation styles of the 0% before the animation starts */
+  animation-fill-mode: backwards;
+}
